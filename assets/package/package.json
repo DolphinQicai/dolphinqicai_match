@@ -1,0 +1,7 @@
+{
+  "name": "RtcSdk_Web",
+  "version": "2.0.3",
+  "main": "lib/hrtc.js",
+  "browser": "lib/hrtc.js",
+  "types": "lib/hrtc.d.ts"
+}

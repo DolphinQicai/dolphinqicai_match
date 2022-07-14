@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<style>
+    /* 2022.07.09.22.42 */
+
+    .main-display{
+        flex: 0 0 auto;
+        /* height: calc(100vh - 340px); */
+        /* height: 720px;
+        width: 1280px; */
+        height: 50%;
+        width: 50%;
+        object-fit: fill;
+        
+        margin: 0 auto;
+    }
+
+	.button {
+		display: inline-block;
+		border-radius: 4px;
+		background-color: #f4511e;
+		border: none;
+		color: #FFFFFF;
+		text-align: center;
+		font-size: 28px;
+		padding: 20px;
+		width: 400px;
+		transition: all 0.5s;
+		cursor: pointer;
+		margin: 5px;
+	}
+
+		.button span {
+			cursor: pointer;
+			display: inline-block;
+			position: relative;
+			transition: 0.5s;
+		}
+
+			.button span:after {
+				content: '»';
+				position: absolute;
+				opacity: 0;
+				top: 0;
+				right: -20px;
+				transition: 0.5s;
+			}
+
+		.button:hover span {
+			padding-right: 25px;
+		}
+
+			.button:hover span:after {
+				opacity: 1;
+				right: 0;
+			}
+</style>
+
+<html>
+	<head>
+		<title>Dolphin期材</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?0593e683ea3b493a150e1c592a62e79c";
+				var s = document.getElementsByTagName("script")[0]; 
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	</head>
+
+	<body class="is-preload">
+
+		<!-- Header -->
+			<section id="header">
+				<header>
+					
+					<h1 id="logo"><a href="#">Dolphin期材</a></h1>
+					
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="#one" class="active">Ⅰ</a></li>
+						<li><a href="#two">Ⅱ</a></li>
+						<li><a href="#three">Ⅲ</a></li>
+						<li><a href="#four">Ⅳ</a></li>
+						<li><a href="#five">Ⅴ</a></li>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="https://twitter.com/aLZxMOtm2mb4b0X" class="icon brands fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+						
+						<li><a href="https://github.com/DolphinQicai" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
+						
+					</ul>
+				</footer>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+				<div id="main">
+
+					
+					<section id="one">
+						<div class="container", id="video">
+							<h3>一</h3>
+						</div>
+                        <div id = "main-display" class="main-display" style="height: 360px; width: 480px; display: none;"></div>
+                        <div id = "main-display_HD" class="main-display" style="height: 720px; width: 1280px; display: none;"></div>
+					</section>
+
+
+					<section id="two">
+						<div class="container", id="video2">
+							<h3>一</h3>
+						</div>
+                        <div id = "main-display2" class="main-display" style="height: 360px; width: 480px; display: none;"></div>
+					</section>
+					<!-- two -->
+
+					<section id="three">
+
+						<div class="container">
+							<header class="major">
+								<h3>二</h3>
+                                
+								
+                                <!-- <button onclick="isBrowserSupport()">check</button> -->
+                                <script>
+                                    function create_client__()
+                                    {
+                                        client = create_client()
+                                    }
+                                </script>
+                                <!-- <button onclick="create_client__()">create client</button> -->
+                                <p>room ID</p>
+                                <br />
+                                <input type="text" value="" id="roomID" style="width: 300px;"/>
+
+                                <br />
+                                <p>user ID</p>
+                                <br />
+                                <input type="text" value="" id="userID" style="width: 300px;"/>
+                                <br />
+                                <p>user name</p>
+                                <br />
+                                <input type="text" value="" id="username" style="width: 300px;"/>
+                                <br />
+                                <button onclick="create_client()" id="create_client_button">create client</button>
+                                <br />
+
+                                <button onclick="joinroom()" id="joinroom_button">join room</button>
+                                <br />
+                                <!-- <button onclick="createstream(client)">create a stream</button> -->
+                                <button onclick="createstream()">create a stream</button>
+                                <br />
+                                <button onclick="publish()">publish</button>
+                                <br />
+                                <button onclick="unpublish()">unpublish</button>
+                                <br />
+                                <button onclick="videocut_per_second()">videocut</button>
+                                <br />
+							</header>
+							<p>
+
+							</p>
+							
+						</div>
+						<!--
+			<div class="container">
+				<h3>Contact Me</h3>
+				<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
+				<form method="post" action="#">
+					<div class="row gtr-uniform">
+						<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
+						<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
+						<div class="col-12"><input type="text" name="subject" id="subject" placeholder="Subject" /></div>
+						<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="6"></textarea></div>
+						<div class="col-12">
+							<ul class="actions">
+								<li><input type="submit" class="primary" value="Send Message" /></li>
+								<li><input type="reset" value="Reset Form" /></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+			</div>
+		-->
+					</section>
+
+
+
+				</div>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<!--<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>-->
+
+							</ul>
+							<p>网站模板来源：<a href="http://html5up.net" target="_blank">HTML5 UP</a></p>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+            <script src="assets/package/lib/hrtc.js">
+                console.log(HRTC.VERSION)
+            </script>
+            <script src="assets/js/axios.min.js"></script>
+            <!-- <script src="jquery.min.js"></script> -->
+            <script src="assets/js/forge.all.min.js"></script>
+            <script type="text/javascript" src="assets/js/jquery.js"></script>
+            <script src="assets/js/button_control.js"></script>
+	</body>
+</html>
