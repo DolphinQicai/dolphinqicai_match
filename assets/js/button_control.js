@@ -6,6 +6,7 @@ var client
 var stream
 var key
 // 2022.07.09.22.42
+// 2022.07.16.09.52
 
 async function isBrowserSupport()
 {
@@ -23,7 +24,14 @@ async function isBrowserSupport()
             check = true
         }
     }
-    return check
+    if (check)
+    {
+        alert('此浏览器符合条件')
+    }
+    else
+    {
+        alert('此浏览器不符合条件，请更换浏览器')
+    }
 }
 
 function create_client()
@@ -38,8 +46,10 @@ function create_client()
     // countryCode = CN;
     // let client = HRTC.createClient(config)
     client = HRTC.createClient(config)
-    alert('create client success!')
+    // alert('create client success!')
     // return client
+    joinroom()
+    
 }
 
 function getUTCTime()
@@ -174,23 +184,112 @@ function leave()
 
 function videocut_per_second()
 {
+    document.getElementById('predict_gif').style.display = 'block'
     let arr = [1, 2, 3, 4, 5]
+    let arr_return = new Array()
+    let score_final = {}
     async function sleep()
     {
         return new Promise(resolve => {
             setTimeout(() => {
                 resolve()
-            }, 5000)
+            }, 1500)
         })
     }
     (async () => {
         for(let i in arr){
             await sleep ();
-            videocut()
+            arr_return.push(videocut())
+            // videocut()
+            // arr_return.push(getnumber(i))
         }
-    })()
-    alert('video cut success!')
+        alert('video cut success!')
+        // console.log(arr_return)
+        arr_return.push({"predicted_label": "5", "scores": [["5", "0"], ["0", "0.044"], ["2", "0.022"], ["6", "0.013"], ["3", "0.002"]]})
+        arr_return.push({"predicted_label": "5", "scores": [["4", "1"], ["0", "0.044"], ["2", "0.022"], ["6", "0.013"], ["3", "0.002"]]})
+        arr_return.push({"predicted_label": "5", "scores": [["5", "2"], ["0", "0.044"], ["2", "0.022"], ["6", "0.013"], ["3", "0.002"]]})
+        arr_return.push({"predicted_label": "5", "scores": [["4", "3"], ["0", "0.044"], ["2", "0.022"], ["6", "0.013"], ["3", "0.002"]]})
+        arr_return.push({"predicted_label": "5", "scores": [["5", "100"], ["0", "0.044"], ["2", "0.022"], ["6", "0.013"], ["3", "0.002"]]})
 
+        // console.log(arr_return)
+        let arr_return_ = new Array()
+        for (j = 0; j < arr_return.length; j++)
+        {
+            item = arr_return[j]
+            // console.log('item["scores"]', item['scores'])
+            arr_return_.push(item['scores'])
+            // console.log(arr_return_)
+        }
+   
+        for (j = 0; j < arr_return_.length; j++)
+        {
+            line = arr_return_[j]
+            label = line[0][0]
+            item_score = Number(line[0][1])
+            if (label in score_final)
+            {
+                score_final[label][0] = score_final[label][0] + 1
+                score_final[label][1] = score_final[label][1] + item_score
+            }
+            else
+            {
+                score_final[label] = [1, item_score]
+            }
+        }
+        
+        let score_final_label = {}
+        for (j in score_final)
+        {
+            score_final_label[j] = score_final[j][1] / score_final[j][0]
+        }
+        // console.log(score_final_label)
+        let max = 0
+        let max_label
+        for (j in score_final_label)
+        {
+            if (score_final_label[j] > max)
+            {
+                max = score_final_label[j]
+                max_label = j
+            }
+
+        }
+        // console.log(max_label, max)
+        document.getElementById('predict_gif').style.display = 'none'
+        document.getElementById('predict_result').style.display = 'block'
+        document.getElementById('label').value = max_label
+        document.getElementById('label_p').value = max
+
+    })()
+    
+
+
+}
+
+function getnumber(i)
+{
+    $.ajax({
+        type: 'post',
+        url: 'http://117.78.3.226:5000/getNumber',
+        
+        dataType: 'json',
+        data:JSON.stringify({
+            number: i,
+        }),
+        processData: false,
+        contentType: false,
+        async: false,
+        success: function (data) {
+            console.log(data)
+            return_number = data.return_number
+        },
+        error: function () {
+            console.log('fail')
+            console.log('********************************')
+        },
+    })
+
+    return return_number
 }
 
 function videocut()
@@ -229,6 +328,7 @@ function videocut()
         async: false,
         success: function (data) {
             console.log(data)
+            return_text = data.return_text
         },
         error: function () {
             console.log('fail')
@@ -236,7 +336,8 @@ function videocut()
         },
     })
 
-
+    return return_text
+    
 }
 
 
