@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <style>
     /* 2022.07.09.22.42 */
-
+    /* 2022.07.16.09.53 */
     .main-display{
         flex: 0 0 auto;
         /* height: calc(100vh - 340px); */
@@ -14,7 +14,7 @@
         margin: 0 auto;
     }
 
-	.button {
+	/* .button {
 		display: inline-block;
 		border-radius: 4px;
 		background-color: #f4511e;
@@ -27,9 +27,79 @@
 		transition: all 0.5s;
 		cursor: pointer;
 		margin: 5px;
-	}
+	} */
+    .buttonstyle {
+        
+	            background-color:#f66f6a;
+	            color:white;
+	            width: 150px;
+	            height: 45px;
+	            border:0;
+	            font-size: 16px;
+	            box-sizing: content-box;				
+                border-radius: 5px;
+            }
+            button:hover{
+	            background-color: #e24e4b;
+            
 
-		.button span {
+
+    }
+    .loading{
+            width: 80px;
+            height: 40px;
+            margin: 0 auto;
+            margin-top:100px;
+        }
+        .loading span{
+            display: inline-block;
+            width: 8px;
+            height: 100%;
+            border-radius: 4px;
+            background: lightgreen;
+            animation: load 1s ease infinite;
+            -webkit-animation: load 1s ease infinite;
+        }
+        @keyframes load{
+            0%,100%{
+                height: 40px;
+                background: lightgreen;
+            }
+            50%{
+                height: 70px;
+                margin: -15px 0;
+                background: lightblue;
+            }
+        }
+        @-webkit-keyframes load{
+            0%,100%{
+                height: 40px;
+                background: lightgreen;
+            }
+            50%{
+                height: 70px;
+                margin: -15px 0;
+                background: lightblue;
+            }
+        }
+        .loading span:nth-child(2){
+            animation-delay: 0.2s;
+            -webkit-animation-delay:0.2s;
+        }
+        .loading span:nth-child(3){
+            animation-delay: 0.2s;
+            -webkit-animation-delay:0.4s;
+        }
+        .loading span:nth-child(4){
+            animation-delay: 0.2s;
+            -webkit-animation-delay:0.6s;
+        }
+        .loading span:nth-child(5){
+            animation-delay: 0.2s;
+            -webkit-animation-delay:0.8s;
+        }
+
+		/* .button span {
 			cursor: pointer;
 			display: inline-block;
 			position: relative;
@@ -52,12 +122,13 @@
 			.button:hover span:after {
 				opacity: 1;
 				right: 0;
-			}
+			} */
 </style>
+
 
 <html>
 	<head>
-		<title>Dolphin期材</title>
+		<title>AI识别系统</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -74,22 +145,22 @@
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 	</head>
 
-	<body class="is-preload">
+	<body class="is-preload" onload="isBrowserSupport()">
 
 		<!-- Header -->
 			<section id="header">
 				<header>
 					
-					<h1 id="logo"><a href="#">Dolphin期材</a></h1>
+					<h1 id="logo"><a href="#">AI识别系统</a></h1>
 					
 				</header>
 				<nav id="nav">
 					<ul>
-						<li><a href="#one" class="active">Ⅰ</a></li>
-						<li><a href="#two">Ⅱ</a></li>
-						<li><a href="#three">Ⅲ</a></li>
-						<li><a href="#four">Ⅳ</a></li>
-						<li><a href="#five">Ⅴ</a></li>
+						<li><a href="#one" class="active"></a></li>
+						<li><a href="#two"></a></li>
+						<li><a href="#three">视频识别</a></li>
+                        <li><a href="#four">预测结果</a></li>
+						<li><a href="#five">人工通道</a></li>
 					</ul>
 				</nav>
 				<footer>
@@ -111,7 +182,7 @@
 					
 					<section id="one">
 						<div class="container", id="video">
-							<h3>一</h3>
+							<!-- <h3>一</h3> -->
 						</div>
                         <div id = "main-display" class="main-display" style="height: 360px; width: 480px; display: none;"></div>
                         <div id = "main-display_HD" class="main-display" style="height: 720px; width: 1280px; display: none;"></div>
@@ -120,17 +191,17 @@
 
 					<section id="two">
 						<div class="container", id="video2">
-							<h3>一</h3>
+							<!-- <h3>二</h3> -->
 						</div>
                         <div id = "main-display2" class="main-display" style="height: 360px; width: 480px; display: none;"></div>
 					</section>
-					<!-- two -->
+					
 
 					<section id="three">
 
 						<div class="container">
 							<header class="major">
-								<h3>二</h3>
+								<!-- <h3>三</h3> -->
                                 
 								
                                 <!-- <button onclick="isBrowserSupport()">check</button> -->
@@ -141,60 +212,83 @@
                                     }
                                 </script>
                                 <!-- <button onclick="create_client__()">create client</button> -->
-                                <p>room ID</p>
-                                <br />
+                                <p>房间号 （默认001）</p>
                                 <input type="text" value="" id="roomID" style="width: 300px;"/>
 
                                 <br />
-                                <p>user ID</p>
-                                <br />
+                                <p>用户ID</p>
                                 <input type="text" value="" id="userID" style="width: 300px;"/>
                                 <br />
-                                <p>user name</p>
-                                <br />
+                                <p>用户名</p>
                                 <input type="text" value="" id="username" style="width: 300px;"/>
                                 <br />
-                                <button onclick="create_client()" id="create_client_button">create client</button>
                                 <br />
-
-                                <button onclick="joinroom()" id="joinroom_button">join room</button>
+                                <button onclick="create_client()" id="create_client_button" class="buttonstyle">进入房间</button>
                                 <br />
+                                <br />
+                                <!-- <button onclick="joinroom()" id="joinroom_button" class="buttonstyle">join room</button> -->
+                                <!-- <br />
+                                <br /> -->
                                 <!-- <button onclick="createstream(client)">create a stream</button> -->
-                                <button onclick="createstream()">create a stream</button>
+                                <button onclick="createstream()" class="buttonstyle">打开摄像头</button>
                                 <br />
-                                <button onclick="publish()">publish</button>
                                 <br />
-                                <button onclick="unpublish()">unpublish</button>
+                                <button onclick="publish()" class="buttonstyle">共享摄像头</button>
                                 <br />
-                                <button onclick="videocut_per_second()">videocut</button>
+                                <br />
+                                <button onclick="unpublish()" class="buttonstyle">停止共享</button>
+                                <br />
+                                <br />
+                                <button onclick="videocut_per_second()" class="buttonstyle">开始识别</button>
                                 <br />
 							</header>
 							<p>
 
 							</p>
-							
 						</div>
-						<!--
-			<div class="container">
-				<h3>Contact Me</h3>
-				<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
-				<form method="post" action="#">
-					<div class="row gtr-uniform">
-						<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-						<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
-						<div class="col-12"><input type="text" name="subject" id="subject" placeholder="Subject" /></div>
-						<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="6"></textarea></div>
-						<div class="col-12">
-							<ul class="actions">
-								<li><input type="submit" class="primary" value="Send Message" /></li>
-								<li><input type="reset" value="Reset Form" /></li>
-							</ul>
-						</div>
-					</div>
-				</form>
-			</div>
-		-->
 					</section>
+
+                    <section id="four">
+
+						<div class="container">
+							<header class="major">
+                                <div id="predict_gif" style="display: none;">
+                                    <h3>正在识别中……</h3>
+                                    <h4>请持续将摄像头对准物体</h4>
+                                    <div class="loading" style="display: block;">
+                                        
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <!-- <textarea id="label" style="height: 30px"></textarea> -->
+                                <div id="predict_result" style="display: none;">
+                                    <h3>识别结果</h3>
+                                    <textarea id="label" style="height: 50px; width: 100px;"></textarea>
+                                    <br />
+                                    <h3>识别概率</h3>
+                                    <textarea id="label_p" style="height: 50px; width: 100px;"></textarea>
+                                </div>
+
+                            </header>
+                        </div>
+                    </section>
+
+                    <section id="five">
+
+						<div class="container">
+							<header class="major">
+                                <p>结果不满意？有任何问题？</p>
+                                <h3>试试人工服务</h3>
+                                <br />
+                                <button class="buttonstyle">联系人工客服</button>
+                            </header>
+                        </div>
+                    </section>
+
 
 
 
