@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <style>
     /* 2022.07.09.22.42 */
-    /* 2022.07.16.09.53 */
+
     .main-display{
         flex: 0 0 auto;
         /* height: calc(100vh - 340px); */
@@ -239,7 +239,8 @@
                                 <button onclick="unpublish()" class="buttonstyle">停止共享</button>
                                 <br />
                                 <br />
-                                <button onclick="videocut_per_second()" class="buttonstyle">开始识别</button>
+                                <!-- <button onclick="videocut_per_second()" class="buttonstyle">开始识别</button> -->
+                                <button onclick="single_photo()" class="buttonstyle">开始识别</button>
                                 <br />
 							</header>
 							<p>
@@ -267,10 +268,12 @@
                                 <!-- <textarea id="label" style="height: 30px"></textarea> -->
                                 <div id="predict_result" style="display: none;">
                                     <h3>识别结果</h3>
-                                    <textarea id="label" style="height: 50px; width: 100px;"></textarea>
-                                    <br />
+                                    <img id="img_return" >
+                                    
+                                    <textarea id="label" style="height: 200px; width: 400px;"></textarea>
+                                    <!-- <br />
                                     <h3>识别概率</h3>
-                                    <textarea id="label_p" style="height: 50px; width: 100px;"></textarea>
+                                    <textarea id="label_p" style="height: 50px; width: 100px;"></textarea> -->
                                 </div>
 
                             </header>
@@ -322,6 +325,7 @@
             <!-- <script src="jquery.min.js"></script> -->
             <script src="assets/js/forge.all.min.js"></script>
             <script type="text/javascript" src="assets/js/jquery.js"></script>
-            <script src="assets/js/button_control.js"></script>
+            <!-- <script src="assets/js/button_control.js"></script> -->
+            <script src="assets/js/button_control_test.js"></script>
 	</body>
 </html>
