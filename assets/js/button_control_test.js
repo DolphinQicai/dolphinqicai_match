@@ -47,8 +47,26 @@ function create_client()
     client = HRTC.createClient(config)
     // alert('create client success!')
     // return client
-    joinroom()
-    
+    // joinroom()
+    let arr = [1]
+    async function sleep()
+    {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve()
+            }, 2000)
+        })
+    }
+    (async () => {
+        for(let i in arr){
+            await sleep ();
+            // arr_return.push(videocut())
+            // videocut()
+            // arr_return.push(getnumber(i))
+            // base64_str, return_text = videocut()
+            joinroom()
+        }
+    })()
 }
 
 function getUTCTime()
@@ -60,13 +78,16 @@ function getUTCTime()
 
 function joinroom()
 {
-    // roomId = '001' // 需要其他函数获得room ID
+    roomId = '001'
+    userId = Math.random().toString(36).slice(-8)
+    userName = Math.random().toString(36).slice(-8)
+    
 
     // userId = '114514'
     // userName = 'Doooooolphin'    // user ID 和 user Name 也需其他函数获得
-    roomId = document.getElementById('roomID').value
-    userId = document.getElementById('userID').value
-    userName = document.getElementById('username').value
+    // roomId = document.getElementById('roomID').value
+    // userId = document.getElementById('userID').value
+    // userName = document.getElementById('username').value
 
     role = 0
     ctime = getUTCTime()
@@ -129,16 +150,37 @@ function joinroom()
 // function createstream(client)
 function createstream()
 {
-
+    document.getElementById('predict_button').style.display = 'block'
     stream = HRTC.createStream({audio: true, microphoneId : 0, video: true, cameraId : 0})
     stream.initialize().then(() => {
         // stream.addResolution('90p_1')
         stream.setVideoProfile('720p_1')
         document.getElementById('main-display_HD').style.display = 'block'
+        
         stream.play(elementId = 'main-display_HD', {muted: true})
         alert('create a stream success!')
     })
     
+}
+
+function createstream_audio_only()
+{
+    audio_only_stream = HRTC.createStream({audio: true, microphoneId : 0, video: true, cameraId : 0})
+    audio_only_stream.initialize().then(() => {
+        // stream.addResolution('90p_1')
+        audio_only_stream.setVideoProfile('720p_1')
+        document.getElementById('main-display_HD').style.display = 'block'
+        
+        // audio_only_stream.play(elementId = 'main-display_HD', {muted: true})
+        console.log('create an audio only stream success!')
+        client.publish(audio_only_stream)
+    })
+
+}
+
+function unpublish_stream_audio_only()
+{
+    client.unpublish(audio_only_stream)
 }
 
 function publish()
@@ -193,7 +235,7 @@ function single_photo()
         return new Promise(resolve => {
             setTimeout(() => {
                 resolve()
-            }, 5000)
+            }, 000)
         })
     }
     (async () => {
@@ -422,4 +464,26 @@ function get_video_id()
 }
 
 
+function connect_service()
+{
+    $.ajax({
+        url:"http://117.78.3.226:5000/connectservice",
+        type:"post",
+        dataType:"json",
+
+        data:JSON.stringify({
+            service: true  
+        }),
+        async : false,
+        success:function (data)
+        {
+            console.log('success')
+        },
+        error:function ()
+        {
+            console.log('fail')
+            console.log('*********')
+        }
+    })
+}
 
