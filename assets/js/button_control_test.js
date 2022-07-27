@@ -256,6 +256,17 @@ function single_photo()
             document.getElementById('img_return').style.width = '720px'
             document.getElementById('img_return').style.height = '480px'
             document.getElementById('label').value = return_text
+
+            var synth = window.speechSynthesis
+            var u = new SpeechSynthesisUtterance();
+            //汉语
+            u.lang = 'zh-CN';
+            u.rate = 1;
+            function speak(textToSpeak) {
+                u.text = textToSpeak;
+                synth.speak(u)
+            }
+            speak(return_text)
         }
         // console.log(base64_list.length)
         
