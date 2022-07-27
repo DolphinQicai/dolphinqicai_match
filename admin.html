@@ -1,0 +1,355 @@
+<!DOCTYPE HTML>
+<style>
+    /* 2022.07.09.22.42 */
+
+    .main-display{
+        flex: 0 0 auto;
+        /* height: calc(100vh - 340px); */
+        /* height: 720px;
+        width: 1280px; */
+        height: 50%;
+        width: 50%;
+        object-fit: fill;
+        
+        margin: 0 auto;
+    }
+
+	/* .button {
+		display: inline-block;
+		border-radius: 4px;
+		background-color: #f4511e;
+		border: none;
+		color: #FFFFFF;
+		text-align: center;
+		font-size: 28px;
+		padding: 20px;
+		width: 400px;
+		transition: all 0.5s;
+		cursor: pointer;
+		margin: 5px;
+	} */
+    .buttonstyle {
+        
+	            background-color:#f66f6a;
+	            color:white;
+	            width: 150px;
+	            height: 45px;
+	            border:0;
+	            font-size: 16px;
+	            box-sizing: content-box;				
+                border-radius: 5px;
+            }
+            button:hover{
+	            background-color: #e24e4b;
+            
+
+
+    }
+    .loading{
+            width: 80px;
+            height: 40px;
+            margin: 0 auto;
+            margin-top:100px;
+        }
+        .loading span{
+            display: inline-block;
+            width: 8px;
+            height: 100%;
+            border-radius: 4px;
+            background: lightgreen;
+            animation: load 1s ease infinite;
+            -webkit-animation: load 1s ease infinite;
+        }
+        @keyframes load{
+            0%,100%{
+                height: 40px;
+                background: lightgreen;
+            }
+            50%{
+                height: 70px;
+                margin: -15px 0;
+                background: lightblue;
+            }
+        }
+        @-webkit-keyframes load{
+            0%,100%{
+                height: 40px;
+                background: lightgreen;
+            }
+            50%{
+                height: 70px;
+                margin: -15px 0;
+                background: lightblue;
+            }
+        }
+        .loading span:nth-child(2){
+            animation-delay: 0.2s;
+            -webkit-animation-delay:0.2s;
+        }
+        .loading span:nth-child(3){
+            animation-delay: 0.2s;
+            -webkit-animation-delay:0.4s;
+        }
+        .loading span:nth-child(4){
+            animation-delay: 0.2s;
+            -webkit-animation-delay:0.6s;
+        }
+        .loading span:nth-child(5){
+            animation-delay: 0.2s;
+            -webkit-animation-delay:0.8s;
+        }
+
+		/* .button span {
+			cursor: pointer;
+			display: inline-block;
+			position: relative;
+			transition: 0.5s;
+		}
+
+			.button span:after {
+				content: '»';
+				position: absolute;
+				opacity: 0;
+				top: 0;
+				right: -20px;
+				transition: 0.5s;
+			}
+
+		.button:hover span {
+			padding-right: 25px;
+		}
+
+			.button:hover span:after {
+				opacity: 1;
+				right: 0;
+			} */
+    
+    /* #main-display_HD, #predict_button{
+        float: left;
+    } */
+</style>
+
+
+<html>
+	<head>
+		<title>管理员页面</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?0593e683ea3b493a150e1c592a62e79c";
+				var s = document.getElementsByTagName("script")[0]; 
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	</head>
+
+	<body class="is-preload" onload="isBrowserSupport(); create_client()">
+
+		<!-- Header -->
+			<section id="header">
+				<header>
+					
+					<h1 id="logo"><a href="#">管理员页面</a></h1>
+					
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="#one" class="active"></a></li>
+						<li><a href="#two"></a></li>
+						<!-- <li><a href="#three">视频识别</a></li>
+                        <li><a href="#four">预测结果</a></li>
+						<li><a href="#five">人工通道</a></li> -->
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="https://twitter.com/aLZxMOtm2mb4b0X" class="icon brands fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+						
+						<li><a href="https://github.com/DolphinQicai" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
+						
+					</ul>
+				</footer>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+				<div id="main">
+
+					
+					<section id="one">
+						<div class="container", id="video">
+                            <header class="major">
+                                <header class="major">
+                                    <h2 >管理员页面</h2>
+                                </header>
+                                <div id = "predict_button" style="display: none;">
+                                    <br />
+                                    <button onclick="single_photo()" class="buttonstyle">开始识别</button>
+                                    <br />
+                                    <br />
+                                    <br />
+                                </div>
+                                <div id = "main-display_HD" class="main-display" style="height: 360px; width: 640px; display: none;"></div>
+                            
+
+                            </header>
+							<!-- <h3>一</h3> -->
+						</div>
+                        <!-- <div id = "main-display" class="main-display" style="height: 360px; width: 480px; display: none;"></div> -->
+                            
+					</section>
+
+
+					<section id="two">
+						<div class="container", id="video2">
+							<!-- <h3>二</h3> -->
+						</div>
+                        <div id = "main-display2" class="main-display" style="height: 360px; width: 480px; display: none;"></div>
+                        
+					</section>
+					
+
+					<section id="three">
+
+						<div class="container">
+							<header class="major">
+								<!-- <h3>三</h3> -->
+                                
+								
+                                <!-- <button onclick="isBrowserSupport()">check</button> -->
+                                <script>
+                                    function create_client__()
+                                    {
+                                        client = create_client()
+                                    }
+                                </script>
+                                <!-- <button onclick="create_client__()">create client</button> -->
+                                <!-- <p>房间号 （默认001）</p>
+                                <input type="text" value="" id="roomID" style="width: 300px;"/>
+
+                                <br />
+                                <p>用户ID</p>
+                                <input type="text" value="" id="userID" style="width: 300px;"/>
+                                <br />
+                                <p>用户名</p>
+                                <input type="text" value="" id="username" style="width: 300px;"/>
+                                <br />
+                                <br /> -->
+                                <!-- <button onclick="create_client()" id="create_client_button" class="buttonstyle">进入房间</button>
+                                <br />
+                                <br /> -->
+                                <!-- <button onclick="joinroom()" id="joinroom_button" class="buttonstyle">join room</button> -->
+                                <!-- <br />
+                                <br /> -->
+                                <!-- <button onclick="createstream(client)">create a stream</button> -->
+                                <!-- <button onclick="createstream()" class="buttonstyle">打开摄像头</button>
+                                <br />
+                                <br />
+                                <button onclick="publish()" class="buttonstyle">共享摄像头</button>
+                                <br />
+                                <br /> -->
+                                <!-- <button onclick="unpublish()" class="buttonstyle">停止共享</button>
+                                <br />
+                                <br /> -->
+                                <!-- <button onclick="videocut_per_second()" class="buttonstyle">开始识别</button> -->
+                                <!-- <button onclick="single_photo()" class="buttonstyle">开始识别</button>
+                                <br /> -->
+                                <button onclick="createstream_audio_only()" class="buttonstyle">共享摄像头</button>
+                                <br />
+                                <button onclick="unpublish_stream_audio_only()" class="buttonstyle">停止共享</button>
+                                <br />
+							</header>
+							<p>
+
+							</p>
+						</div>
+					</section>
+
+                    <!-- <section id="four">
+
+						<div class="container">
+							<header class="major">
+                                <div id="predict_gif" style="display: none;">
+                                    <h3>正在识别中……</h3>
+                                    <h4>请持续将摄像头对准物体</h4>
+                                    <div class="loading" style="display: block;">
+                                        
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                 <textarea id="label" style="height: 30px"></textarea> -->
+                                <!-- <div id="predict_result" style="display: none;">
+                                    <h3>识别结果</h3>
+                                    <img id="img_return" >
+                                    
+                                    <textarea id="label" style="height: 200px; width: 400px;"></textarea> -->
+                                    <!-- <br />
+                                    <h3>识别概率</h3>
+                                    <textarea id="label_p" style="height: 50px; width: 100px;"></textarea> -->
+                                <!-- </div> -->
+
+                            <!-- </header>
+                        </div>
+                    </section> -->
+
+                    <!-- <section id="five">
+
+						<div class="container">
+							<header class="major">
+                                <p>结果不满意？有任何问题？</p>
+                                <h3>试试人工服务</h3>
+                                <br />
+                                <button class="buttonstyle" onclick="connect_service()">联系人工客服</button>
+                            </header>
+                        </div>
+                    </section> -->
+
+
+
+
+				</div>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<!--<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>-->
+
+							</ul>
+							<p>网站模板来源：<a href="http://html5up.net" target="_blank">HTML5 UP</a></p>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+            <script src="assets/package/lib/hrtc.js">
+                console.log(HRTC.VERSION)
+            </script>
+            <script src="assets/js/axios.min.js"></script>
+            <!-- <script src="jquery.min.js"></script> -->
+            <script src="assets/js/forge.all.min.js"></script>
+            <script type="text/javascript" src="assets/js/jquery.js"></script>
+            <!-- <script src="assets/js/button_control.js"></script> -->
+            <script src="assets/js/button_control_test.js"></script>
+	</body>
+</html>
