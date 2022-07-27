@@ -123,12 +123,16 @@
 				opacity: 1;
 				right: 0;
 			} */
+    
+    /* #main-display_HD, #predict_button{
+        float: left;
+    } */
 </style>
 
 
 <html>
 	<head>
-		<title>AI识别系统</title>
+		<title>管理员页面</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -145,22 +149,22 @@
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 	</head>
 
-	<body class="is-preload" onload="isBrowserSupport()">
+	<body class="is-preload" onload="isBrowserSupport(); create_client()">
 
 		<!-- Header -->
 			<section id="header">
 				<header>
 					
-					<h1 id="logo"><a href="#">AI识别系统</a></h1>
+					<h1 id="logo"><a href="#">管理员页面</a></h1>
 					
 				</header>
 				<nav id="nav">
 					<ul>
 						<li><a href="#one" class="active"></a></li>
 						<li><a href="#two"></a></li>
-						<li><a href="#three">视频识别</a></li>
+						<!-- <li><a href="#three">视频识别</a></li>
                         <li><a href="#four">预测结果</a></li>
-						<li><a href="#five">人工通道</a></li>
+						<li><a href="#five">人工通道</a></li> -->
 					</ul>
 				</nav>
 				<footer>
@@ -182,10 +186,25 @@
 					
 					<section id="one">
 						<div class="container", id="video">
+                            <header class="major">
+                                <header class="major">
+                                    <h2 >管理员页面</h2>
+                                </header>
+                                <div id = "predict_button" style="display: none;">
+                                    <br />
+                                    <button onclick="single_photo()" class="buttonstyle">开始识别</button>
+                                    <br />
+                                    <br />
+                                    <br />
+                                </div>
+                                <div id = "main-display_HD" class="main-display" style="height: 360px; width: 640px; display: none;"></div>
+                            
+
+                            </header>
 							<!-- <h3>一</h3> -->
 						</div>
-                        <div id = "main-display" class="main-display" style="height: 360px; width: 480px; display: none;"></div>
-                        <div id = "main-display_HD" class="main-display" style="height: 720px; width: 1280px; display: none;"></div>
+                        <!-- <div id = "main-display" class="main-display" style="height: 360px; width: 480px; display: none;"></div> -->
+                            
 					</section>
 
 
@@ -194,6 +213,7 @@
 							<!-- <h3>二</h3> -->
 						</div>
                         <div id = "main-display2" class="main-display" style="height: 360px; width: 480px; display: none;"></div>
+                        
 					</section>
 					
 
@@ -212,7 +232,7 @@
                                     }
                                 </script>
                                 <!-- <button onclick="create_client__()">create client</button> -->
-                                <p>房间号 （默认001）</p>
+                                <!-- <p>房间号 （默认001）</p>
                                 <input type="text" value="" id="roomID" style="width: 300px;"/>
 
                                 <br />
@@ -222,25 +242,29 @@
                                 <p>用户名</p>
                                 <input type="text" value="" id="username" style="width: 300px;"/>
                                 <br />
+                                <br /> -->
+                                <!-- <button onclick="create_client()" id="create_client_button" class="buttonstyle">进入房间</button>
                                 <br />
-                                <button onclick="create_client()" id="create_client_button" class="buttonstyle">进入房间</button>
-                                <br />
-                                <br />
+                                <br /> -->
                                 <!-- <button onclick="joinroom()" id="joinroom_button" class="buttonstyle">join room</button> -->
                                 <!-- <br />
                                 <br /> -->
                                 <!-- <button onclick="createstream(client)">create a stream</button> -->
-                                <button onclick="createstream()" class="buttonstyle">打开摄像头</button>
+                                <!-- <button onclick="createstream()" class="buttonstyle">打开摄像头</button>
                                 <br />
                                 <br />
                                 <button onclick="publish()" class="buttonstyle">共享摄像头</button>
                                 <br />
+                                <br /> -->
+                                <!-- <button onclick="unpublish()" class="buttonstyle">停止共享</button>
                                 <br />
-                                <button onclick="unpublish()" class="buttonstyle">停止共享</button>
-                                <br />
-                                <br />
+                                <br /> -->
                                 <!-- <button onclick="videocut_per_second()" class="buttonstyle">开始识别</button> -->
-                                <button onclick="single_photo()" class="buttonstyle">开始识别</button>
+                                <!-- <button onclick="single_photo()" class="buttonstyle">开始识别</button>
+                                <br /> -->
+                                <button onclick="createstream_audio_only()" class="buttonstyle">共享摄像头</button>
+                                <br />
+                                <button onclick="unpublish_stream_audio_only()" class="buttonstyle">停止共享</button>
                                 <br />
 							</header>
 							<p>
@@ -249,7 +273,7 @@
 						</div>
 					</section>
 
-                    <section id="four">
+                    <!-- <section id="four">
 
 						<div class="container">
 							<header class="major">
@@ -265,32 +289,32 @@
                                         <span></span>
                                     </div>
                                 </div>
-                                <!-- <textarea id="label" style="height: 30px"></textarea> -->
-                                <div id="predict_result" style="display: none;">
+                                 <textarea id="label" style="height: 30px"></textarea> -->
+                                <!-- <div id="predict_result" style="display: none;">
                                     <h3>识别结果</h3>
                                     <img id="img_return" >
                                     
-                                    <textarea id="label" style="height: 200px; width: 400px;"></textarea>
+                                    <textarea id="label" style="height: 200px; width: 400px;"></textarea> -->
                                     <!-- <br />
                                     <h3>识别概率</h3>
                                     <textarea id="label_p" style="height: 50px; width: 100px;"></textarea> -->
-                                </div>
+                                <!-- </div> -->
 
-                            </header>
+                            <!-- </header>
                         </div>
-                    </section>
+                    </section> -->
 
-                    <section id="five">
+                    <!-- <section id="five">
 
 						<div class="container">
 							<header class="major">
                                 <p>结果不满意？有任何问题？</p>
                                 <h3>试试人工服务</h3>
                                 <br />
-                                <button class="buttonstyle">联系人工客服</button>
+                                <button class="buttonstyle" onclick="connect_service()">联系人工客服</button>
                             </header>
                         </div>
-                    </section>
+                    </section> -->
 
 
 
