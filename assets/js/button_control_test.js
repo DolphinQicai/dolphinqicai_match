@@ -99,7 +99,8 @@ function joinroom()
 
     var hash_server
     $.ajax({
-        url:"http://117.78.3.226:5000/login",
+        // url:"http://117.78.3.226:5000/login",
+        url:"http://116.204.64.235:5000/login",
         type:"post",
         dataType:"json",
 
@@ -390,8 +391,8 @@ function getnumber(i)
 {
     $.ajax({
         type: 'post',
-        url: 'http://117.78.3.226:5000/getNumber',
-        
+        // url: 'http://117.78.3.226:5000/getNumber',
+        url: 'http://116.204.64.235:5000/getNumber',
         dataType: 'json',
         data:JSON.stringify({
             number: i,
@@ -435,8 +436,8 @@ function videocut()
 
     $.ajax({
         type: 'post',
-        url: 'http://117.78.3.226:5000/getImg',
-        
+        // url: 'http://117.78.3.226:5000/getImg',
+        url: 'http://116.204.64.235:5000/getImg',
         dataType: 'json',
         data:JSON.stringify({
             time: mytime,
@@ -478,7 +479,8 @@ function get_video_id()
 function connect_service()
 {
     $.ajax({
-        url:"http://117.78.3.226:5000/connectservice",
+        // url:"http://117.78.3.226:5000/connectservice",
+        url:"http://116.204.64.235:5000/connectservice",
         type:"post",
         dataType:"json",
 
